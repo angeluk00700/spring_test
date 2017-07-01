@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Hello AngularJS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
+    <script src="/js/hello.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"></link>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="hello" ng-controller="HelloCtrn">
+  <div class="container">
+  	<h1>angular test page</h1>
+  	<br />
+    <div>
+    	<ul class="list-unstyled" style="display:inline-block">
+    		<li ng-repeat="todo in todos | filter:statusFilter" style="display:inline-block">
+  			  	<div class="input-group">
+  					  <span class="input-group-addon">
+  						       <input type="checkbox" ng-model="todo.completed" aria-label="..." />
+  				    </span>
+  				    <input type="text" ng-model="todo.title" />
+  					  <date>{{todo.createdAt | date:'yyyy-mm-dd HH:mm:ss'}}</date>
+
+              <button class="btn btn-danger" type="button" ng-click="remove(todo)">delete</button>
+
+            </div><!-- /input-group -->
+    		</li>
+    	</ul>
+    </div>
+    <div>
+      <button class="btn btn-primary" ng-click="statusFilter={completed:true}">completed</button>
+      <button class="btn btn-primary" ng-click="statusFilter={completed:false}">active</button>
+      <button class="btn btn-primary" ng-click="statusFilter={}">all</button>
+    </div>
+  </div><!-- /.container -->
+</body>
+</html>
